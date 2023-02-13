@@ -146,19 +146,43 @@ namespace csharp_oop_ecommerce_basic.model
 
         //Equals
 
-        public bool Equals(Product p)
-        {
-            if (p == null) return false;
-
-            if (this == p) return true;
-
-            return (this.Id == p.Id);
-        }
-
+    
         //ToString
         public override string ToString()
         {
             return "Product:" +Id + ";" + Name + ";" + Manufacturer+";"+Description + ";" + Price;
+        }
+        public class Prodotto : IEquatable<Prodotto>, IComparable<Prodotto>
+        {
+
+            public Prodotto(string id)
+            {
+                Id = id;
+            }
+            public string Id { get; private set; }
+
+            public bool Equals(Prodotto p)
+            {
+                if (p == null) return false;
+                if (this == p)
+                    return true;
+
+                return this.Id == p.Id;
+            }
+
+            public int CompareTo(Prodotto p)
+            {
+                if (p == null)
+                    return 1;
+                else
+                    return Id.CompareTo(p.Id);
+            }
+
+            public override string ToString()
+            {
+                return "Prodotto " + Id;
+            }
+
         }
 
     }

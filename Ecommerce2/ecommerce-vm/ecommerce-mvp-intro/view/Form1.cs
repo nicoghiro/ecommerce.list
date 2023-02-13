@@ -126,7 +126,7 @@ namespace csharp_oop_ecommerce_basic
             
             int i = carr.IndexOf(p);
             if (i >= 0)
-                return carr.Products[i];
+                return carr.Oggetti[i];
             else
                 return null;
         }
@@ -165,15 +165,15 @@ namespace csharp_oop_ecommerce_basic
             list.View = View.Details;
             list.FullRowSelect = true;
 
-            Product[] prodotti = carr.Products;
+            List<Product>prodotti = carr.Oggetti;
 
-            for (int i = 0; i < prodotti.Length; i++)
+          foreach(Product p in prodotti)
             {
-                ListViewItem item = new ListViewItem(prodotti[i].Id);
-                item.SubItems.Add(prodotti[i].Name);
-                item.SubItems.Add(prodotti[i].Manufacturer);
-                item.SubItems.Add(prodotti[i].Description);
-                item.SubItems.Add(""+prodotti[i].getScontato());
+                ListViewItem item = new ListViewItem(p.Id);
+                item.SubItems.Add(p.Name);
+                item.SubItems.Add(p.Manufacturer);
+                item.SubItems.Add(p.Description);
+                item.SubItems.Add(""+p.getScontato());
                 list.Items.Add(item);
             }
 
